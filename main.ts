@@ -8,6 +8,7 @@ const ENTRY =
 
 if (ENTRY.length > 200) throw new Error(`entry too long: ${ENTRY.length} chars`);
 if (ENTRY.trim().length === 0) throw new Error("entry is empty");
+if (ENTRY.includes("\n")) throw new Error("entry must be a single line");
 
 mkdirSync("/output", { recursive: true });
 writeFileSync("/output/entry.txt", ENTRY + "\n", "utf8");
